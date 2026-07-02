@@ -1,0 +1,49 @@
+Através do pacote "gravity" para o R, consegue-se informações sobre o comércio bilateral entre países. Utilizando como inspiração a equação da gravitação universal de Newton, o objetivo desse modelo é estimar a atração e 
+restitividade dos mercados e se as variáveis são ou não significativas para explicar essas relações. É possível estabelecer um modelo do tipo Mínimo Quadrados Ordinários para estimar se tais fluxos comerciais são ou não afetados 
+por variáveis como: o total exportado/importado pelos países selecionados; o produto interno desses países; a distância entre eles; se fazem fronteira; se falam o mesmo idiomas; assim como outras características geográficas e 
+econômicas que envolvem as relações entre os países. Geralmente o modelo utilizado para estimação das relações entre as variáveis pode se utilizar de elaborações matemáticas mais sofisticadas conforme o interesse do pesquisador, 
+por exemplo, um sistema de equações para estimação iterada das resistências comerciais que possam existir entre os países, o que requer que se rode o modelo diversas vezes para diversos pares de países, de forma a identificar e 
+talvez evitar a multicolinearidade entre as variáveis observadas (Carneiro et al., 2022).
+
+Como o interesse deste artigo é analisar a relação bilateral entre o Brasil e os maiores compradores de madeira brasileira, as referências utilizadas para tentar estimar tal relação comercial são, principalmente, 
+o Texto para Discussão nº 2775 do Ipea, onde foi realizada uma análise desagregrada e setorial para diversos pares de países utilizando uma equação gravitacional estrutural e sua versão empírica baseada na 
+estimação de "Poisson pseudo-maximum likelihood" (modelo de pseudo-máxima verossimilhança de Poisson), e o texto de Maurício Vargas, onde o autor explica como utilizar o pacote R "gravity" para conseguir estimações como as 
+propostas pelo Texto para Discussão, mas apenas consegue lidar com dados em cross-section e sem considerar as informações sobre a existência das barreiras não-tarifárias. Para gerar um modelo econométrico pelo R que possa conter 
+essas informações, é necessário criar um novo dataset onde cria-se uma nova variável Dummy em que indica se há ou não presença de tais barreiras, não levando em consideração o número de barreiras existentes para cada par comercial. 
+
+De acordo com o Texto para Discussão 2775 do Ipea (Carneiro et al., 2022), a melhor maneira de se usar um gravity model para estimar os impactos das barreiras não-tarifárias é utilizando o menor nível de agregação possível dos dados, 
+correndo o risco de, quanto mais agregados, menos significativo é o modelo em questão. 
+Isso se dá porque há diversos tipos de barreiras não-tarifárias e os seus impactos nos fluxos bilaterais são inconstantes, uma vez que BNT similares podem produzir efeitos opostos a depender da observação. 
+
+Os resultados do modelo gravitacional obtido através do pacote R podem ser encontrado no arquivo .R disponibilizados conjuntamente a este documento. 
+Sobre os resultados, consegue-se verificar que o modelo é estatisticamente significativo, não há registro de colinearidade entre as variáveis, mas o poder explicativo do modelo é parco.
+
+Usar o gravity model para estimar a relação entre as barreiras não-tarifárias e o fluxo do comércio internacional entre países tem certas limitações. 
+A mais importante limitação é que o modelo gravitacional utilizado não leva em conta o aspecto temporal das transações, e apenas reflete a atração espacial entre os países.
+
+Os modelos gravitacionais convencionais geralmente não apresentam uma análise dinâmica do processo comercial bilateral, utilizando-se bases de dados em cross-section, embora haja métodos que utilizem dados em painel para análises 
+através do tempo, como em Guverich e Herman (2018). Entretanto, para estimar estes modelos, é necessário um conhecimento estatístico mais aprofundado, assim como maior atenção à programação desenvolvida para estimar o modelo, uma vez 
+que não há pacote no R que contenha esse tipo de funcionalidade.
+
+Por fim, acredita-se que para analisar os impactos das barreiras não-tarifárias no comércio é necessário uma análise qualitativa sobre os acordos comerciais em vigor e como elas se relacionam com os índices de desmatamento através do 
+tempo, o que levaria a estudos sobre as relações político-econômicas entre os países (que podem ser multilaterais), sobre novas tendências setoriais, como tecnologias inovadoras que intentam ser ambientalmente sustentáveis e seus 
+resultados práticos, assim como a especificidade de cada barreira não-tarifária que atua no setor de extração de madeira.
+
+A quantificação dos resultados das barreiras não-tarifárias é inescapável, porém, para um melhor entendimento deste processo internacional de tentativa de reduzir o desmatamento, é necessário uma avaliação qualitativa dos 
+impulsionadores desse movimento, uma vez que estatisticamente ainda faltam mecanismos precisos para medir este fenômeno.
+
+
+
+Referências: 
+
+BEYER, R. et al. Gravity models do not explain, and cannot predict, international migration dynamics. 2022. Disponível em: https://www.nature.com/articles/s41599-022-01067-x. Acesso em 22/06/2023.
+
+CARNEIRO, F. et al. As medidas não tarifárias constituem barreira ao comércio? Uma abordagem global e multissetorial. Brasília: IPEA, Texto para discussão, vol.2775, 2022.
+
+GUVERICH, T.; HERMAN, P. The Dynamic Gravity Dataset: 1948-2016. Washington: Economics Working Paper Series, 2018-02-A.
+
+VARGAS, M. A crash course in gravity models. 2023. Disponível em: https://cran.r-project.org/web/packages/gravity/vignettes/crash-course-on-gravity-models.html. Acesso em: 22/06/2023.
+
+https://www.rdocumentation.org/packages/gravity/versions/1.1
+https://github.com/pachadotdev/gravity
+

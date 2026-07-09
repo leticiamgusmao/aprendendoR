@@ -1,0 +1,20 @@
+# Script para teste da base de Pessoal da Admnin Indireta de Niterói #
+# Autora: Letícia de Melo Gusmão
+# Subsecretaria de Avaliação e Gestão da Informação (de Políticas Públicas) - SEPLAG/NITERÓI #
+install.packages(c("httr", "jsonlite", "tidyverse","dplyr"))
+library("httr","jsonlite","tidyverse","dplyr")
+library(dplyr)
+setwd("C:\\Users\\leticiag\\Desktop\\Transparencia")
+db_nitrans <- read_csv("Portal da Transparência.csv")
+
+str(db_nitrans)
+# Aqui conseguimos ver a estrutura dos dados
+summary(db_nitrans)
+# A função summary já nos dá uma ideia do saláro médio do total dos funcionários da Nittrans
+
+# Precisamos criar uma coluna com apenas o primeiro nome dos servidores, excluir duplicatas, e criar uma query para cruzar com a API.
+
+
+# Trazendo dados da API Nomes Censo 2022 IBGE
+# 
+nomes_url <- paste0("https://servicodados.ibge.gov.br/api/v2/censos/nomes/")
